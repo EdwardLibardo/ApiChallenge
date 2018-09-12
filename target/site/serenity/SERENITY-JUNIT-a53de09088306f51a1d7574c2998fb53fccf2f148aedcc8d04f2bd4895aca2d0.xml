@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="2" failures="0" name="Search by genre" skipped="0" tests="6" time="3.16" timestamp="2018-09-11T18:35:15.986-05:00[America/Bogota]"><testcase name="Verify if there are songs by existing genre"><error message="Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2 path $" type="com.google.gson.stream.MalformedJsonException">Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2 path $</error><system-err>Use JsonReader.setLenient(true) to accept malformed JSON at line 2 column 2 path $&#13;
+com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)&#13;
+com.google.gson.stream.JsonReader.checkLenient(JsonReader.java:1401)&#13;
+com.google.gson.stream.JsonReader.doPeek(JsonReader.java:542)&#13;
+com.google.gson.stream.JsonReader.peek(JsonReader.java:425)&#13;
+com.google.gson.JsonParser.parse(JsonParser.java:60)&#13;
+com.google.gson.JsonParser.parse(JsonParser.java:45)&#13;
+packages.Helpers.JsonHelper.getJsonObjectListFromResponse(JsonHelper.java:18)&#13;
+packages.Helpers.RequestManager.assertNumberOfSongs(RequestManager.java:57)&#13;
+packages.glue.GenreSteps.iSeeTheTopSong(GenreSteps.java:25)&#13;
+cucumber.runner.Runner.runPickle(Runner.java:80)&#13;
+</system-err></testcase><testcase name="Search songs by no existing genre"/></testsuite>
