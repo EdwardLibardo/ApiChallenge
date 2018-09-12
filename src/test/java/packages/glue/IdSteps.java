@@ -1,6 +1,5 @@
 package packages.glue;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -9,7 +8,7 @@ import packages.pages.Methods;
 
 import static io.restassured.RestAssured.given;
 
-public class idSteps {
+public class IdSteps {
     Methods songwithid = new Methods();
     Methods songWithIvalidID = new Methods();
 
@@ -28,20 +27,11 @@ public class idSteps {
         songwithid.PrintTheSongCalledChemicalWarfare();
     }
 
-    @Given("^That i have the Chemical Warfare Song$")
-    public void thatIHaveTheChemicalWarfareSong() {
-        songwithid.SaveTheSongCalledChemicalInJsonObject();
+    @And("^I can verify that this is the desired song$")
+    public void iCanVerifyThatThisIsTheDesiredSong() {
+        songwithid.SaveTheSongCalledChemicalInJsonObject("Dead Kennedys");
     }
 
-    @When("^I verify that this song is the same with the expected son$")
-    public void iVerifyThatThisSongIsTheSameWithTheExpectedSon() {
-    songwithid.VerifyTheSongChemical();
-    }
-
-    @Then("^I can obtain the same characteristics$")
-    public void iCanObtainTheSameCharacteristics() {
-
-    }
 
     //---------------------------------------------------------------------------------
 
@@ -52,7 +42,7 @@ public class idSteps {
 
     @When("^I write a wrong \"([^\"]*)\"$")
     public void iWriteAWrong(String invalidid) {
-        songWithIvalidID.addTheInvalidIdtoTheEndpoint(invalidid);
+        songWithIvalidID.addTheInvalidIdToTheEndpoint(invalidid);
     }
 
     @Then("^I can not find a song in the data base$")

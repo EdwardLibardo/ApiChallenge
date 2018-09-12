@@ -1,6 +1,5 @@
 package packages.glue;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -30,20 +29,8 @@ public class TopFiveSteps {
     }
 
 
-    @Given("^That i have five songs$")
-    public void thatIHaveSongs()  {
-        TopFive.addTopFiveToTheMainUrl();
-    }
-
-    @When("^I search five songs$")
-    public void iSearchFiveSongs() {
-        TopFive.SaveFiveSongs();
-
-    }
-
-
-    @And("^I can verify that there are five songs$")
-    public void iCanVerifyThatThereAreSongs()  {
-       TopFive.VerifyThatThereAreFiveSongs();
+    @And("^I can verify that there are (\\d+) songs$")
+    public void iCanVerifyThatThereAreSongs(int numberOfSongs)  {
+       TopFive.VerifyThatThereAreFiveSongs(numberOfSongs);
     }
 }

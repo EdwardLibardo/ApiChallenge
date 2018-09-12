@@ -1,6 +1,7 @@
 package packages.pages;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
@@ -23,6 +24,7 @@ public class Methods {
     String idEndpoint = "";
     JsonHelper jsonHelper = new JsonHelper();
     JsonArray topFiveJson;
+    JsonObject chemicalWarfareSong;
 
     public void readMainEndpoint() {
         reader = new PropertiesReader();
@@ -37,14 +39,10 @@ public class Methods {
     }
 
 
-    public void SaveFiveSongs() {
-
-
-    }
-
-    public void VerifyThatThereAreFiveSongs() {
+    public void VerifyThatThereAreFiveSongs(int numberOfSongs) {
         topFiveJson = jsonHelper.getJsonObjectListFromResponse(response.then());
-        System.out.println(topFiveJson+" 5 canciones");
+        Assert.assertEquals("It was expected " + numberOfSongs + " but the result was: " + topFiveJson.size(), topFiveJson.size(), numberOfSongs);
+        System.out.println(topFiveJson.size());
     }
 
 
@@ -61,18 +59,14 @@ public class Methods {
         response = query.when().get(idEndpoint);
     }
 
-    public void SaveTheSongCalledChemicalInJsonObject() {
-        JsonHelper jsonHelper = new JsonHelper();
-        JsonArray genres;
-    }
-
-    public void VerifyTheSongChemical() {
-        topFiveJson = jsonHelper.getJsonObjectListFromResponse(response.then());
-        Assert.assertEquals("It was expected  but the result was: " + topFiveJson.size(), topFiveJson.size());
+    public void SaveTheSongCalledChemicalInJsonObject(String artist) {
+        chemicalWarfareSong = jsonHelper.getJsonObjectFromResponse(response.then());
+        String actualArtists = chemicalWarfareSong.get("artist").getAsString();
+        Assert.assertEquals(actualArtists, artist);
     }
 
 
-    public void addTheInvalidIdtoTheEndpoint(String id) {
+    public void addTheInvalidIdToTheEndpoint(String id) {
         idEndpoint = reader.getMenu() + reader.getid() + id;
         System.out.println("Id endpoint " + idEndpoint);
         query = given();
