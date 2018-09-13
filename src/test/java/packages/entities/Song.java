@@ -36,6 +36,10 @@ public class Song extends org.apache.avro.specific.SpecificRecordBase implements
     public Song() {
     }
 
+    public Song(long id) {
+        this.id = id;
+    }
+
     /**
      * All-args constructor.
      */

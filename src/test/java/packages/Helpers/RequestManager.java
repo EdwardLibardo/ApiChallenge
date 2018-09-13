@@ -7,9 +7,11 @@ import org.junit.Assert;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import static net.serenitybdd.rest.SerenityRest.given;
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class RequestManager {
 
@@ -41,8 +43,8 @@ public class RequestManager {
     }
 
     @Step
-    public void assertInstance(String instanceValue, Response response) {
-        response.then().assertThat().extract().response().body().toString().contains(instanceValue);
+    public void assertInstance(String instanceValue, String value, Response response) {
+        Assert.assertTrue(response.then().extract().response().getBody().jsonPath().get(instanceValue).toString().contains(value));
     }
 
     @Step
@@ -53,9 +55,17 @@ public class RequestManager {
     @Step
     public void assertNumberOfSongs(int songs, Response response) {
         JsonHelper jsonHelper = new JsonHelper();
-        JsonArray genres;
-        genres = jsonHelper.getJsonObjectListFromResponse(response.then());
-        Assert.assertEquals("It was expected " + songs + " but the result was: " + genres.size(), genres.size(), songs);
+        JsonArray songsList;
+        songsList = jsonHelper.getJsonObjectListFromResponse(response.then());
+        Assert.assertEquals("It was expected " + songs + " but the result was: " + songsList.size(), songsList.size(), songs);
     }
+
+    @Step
+    public void assertSongCharacteristics(List<List<String>> songFields, Response response) {
+        response.then().assertThat().body(containsString("{\"artist\":\"" + songFields.get(1).get(0)
+                + "\",\"album\":\"" + songFields.get(1).get(1) + "\",\"name\":\"" + songFields.get(1).get(2) + "\"}"));
+    }
+
+
 
 }

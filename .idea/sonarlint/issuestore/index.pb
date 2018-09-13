@@ -15,8 +15,6 @@ $src/test/resources/config.properties,0\f\0f13ca54fbf51d3451e2d260e112687a3cb1c
 -src/test/java/packages/glue/TopFiveSteps.java,7\e\7ed37edd6628b36e57208fca09326d547d966766
 d
 4src/test/java/packages/Helpers/PropertiesReader.java,3\d\3df41a847c696ba3f628ddb4c06ed4bbbd10673d
-Y
-)src/test/java/packages/pages/Methods.java,6\5\65dcb5a559e7e02fa5682b63a4e294c42b3ed35c
 X
 (src/test/java/packages/glue/idSteps.java,d\b\dbe3fced9a101c8de7deec42d7b8832cfc62919a
 c

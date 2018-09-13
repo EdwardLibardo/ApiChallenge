@@ -1,5 +1,6 @@
 package packages.kafkaApi;
 
+import cucumber.api.java.Before;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.common.serialization.Serializer;
@@ -45,4 +46,13 @@ public class SongSerializer  <T extends org.apache.avro.specific.SpecificRecord>
     public void close() {
         inner.close();
     }
+
+//    @Before
+//    public void sleep(){
+//        try {
+//            Thread.sleep(100);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

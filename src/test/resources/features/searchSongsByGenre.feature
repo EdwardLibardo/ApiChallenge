@@ -4,22 +4,14 @@ Feature: Search by genre
   So That I can see the songs that belong to that genre
 
 
-  Scenario Outline: Verify if there are songs by existing genre
-    Given I have "genre" endpoint
-    When I send a request for a "<genre>"
-    Then I see the top 5 song
-    Examples:
-      | genre   |
-      | Hip Hop |
-      | Punk    |
+  Scenario: Search songs by existing genre
+    Given I want to search the "genre"
+    When I made a search for a genre
+      | punk |
+    Then I can see the top 5 songs
 
-  Scenario Outline: Search songs by no existing genre
-    Given I have "genre" endpoint
-    When I send a request for a "<genres>"
-    Then I don't get songs
-    Examples:
-      | genres    |
+  Scenario: Search songs by no existing genre
+    Given I want to search the "genre"
+    When I made a search for a genre
       | Vallenato |
-      | Salsa     |
-      |           |
-      | 12345     |
+    Then I don't get any song
